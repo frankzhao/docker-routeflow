@@ -11,4 +11,8 @@ make
 make run
 ```
 
-By default port 6633 is exposed for the controller.
+By default port 6633 is exposed for the controller. In order to connect an external OpenvSwitch, set the bridge controller to the IP of this container and port 6633.
+
+```
+ovs-vsctl set-controller br-int tcp:<ip>:6633
+```
