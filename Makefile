@@ -1,6 +1,6 @@
 ROOT		:= $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 NAME		:= docker-routeflow
-REPOSITORY	:= frankzhao/docker-routeflow
+REPOSITORY	:= chickenmaru/routeflow
 VERSION		:= 1.0
 
 .PHONY: all build clean
@@ -8,14 +8,14 @@ VERSION		:= 1.0
 all: build
 
 build:
-	@docker build -t $(REPOSITORY) $(ROOT)
+	@docker build -t $(REPOSITORY):$(VERSION) $(ROOT)
 
 run:
 	@docker run \
 		--privileged --name $(NAME) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v $(shell which docker):$(shell which docker) \
-		-it $(REPOSITORY)
+		-it $(REPOSITORY):$(VERSION)
 
 clean:
-	@docker rmi -f $(BUILDER)
+	@docker rmi -f $(REPOSITORY):$(VERSION)
