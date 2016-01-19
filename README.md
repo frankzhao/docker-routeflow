@@ -6,6 +6,14 @@ The initial command will set up and run `rftest` as per the [RouteFlow tutorial]
 Install
 ---
 
+To pull this image from the Docker Hub:
+
+```
+docker pull chickenmaru/routeflow
+```
+
+Alternatively, build it yourself:
+
 ```
 make
 make run
